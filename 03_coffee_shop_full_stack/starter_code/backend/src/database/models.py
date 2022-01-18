@@ -20,6 +20,7 @@ def setup_db(app):
     app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
     db.app = app
     db.init_app(app)
+  
 
 
 '''
@@ -58,6 +59,10 @@ class Drink(db.Model):
     # the required datatype is [{'color': string, 'name':string, 'parts':number}]
     recipe = Column(String(180), nullable=False)
 
+    '''Initialize the Drink'''
+    def __init__(self, title, recipe):
+        self.title = title
+        self.recipe = recipe
     '''
     short()
         short form representation of the Drink model
